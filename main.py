@@ -1,20 +1,15 @@
-import sys
 
-# считывание списка из входного потока
-'''ustanovka-i-zapusk-yazyka
-ustanovka-i-poryadok-raboty-pycharm
-peremennyye-operator-prisvaivaniya-tipy-dannykh
-arifmeticheskiye-operatsii
-ustanovka-i-poryadok-raboty-pycharm'''
+# Список предметов
+things = {'карандаш': 20, 'зеркальце': 100, 'зонт': 500, 'рубашка': 300, 
+          'брюки': 1000, 'бумага': 200, 'молоток': 600, 'пила': 400, 'удочка': 1200,
+          'расческа': 40, 'котелок': 820, 'палатка': 5240, 'брезент': 2130, 'спички': 10}
 
-lst_in = list(map(str.strip, sys.stdin.readlines()))
+N = int(input()) * 1000 # Вместимость рюкзака в граммах
 
-# здесь продолжайте программу (используйте список lst_in)
-d = {}
+sorted_things = {v:k for k, v in things.items()}
 
-for i in lst_in:
-    if i in d:
-        print(f'Взято из кэша: {d[i]}')
-    else:
-        d[i] = f'HTML-страница для адреса {i}'
-        print(f'HTML-страница для адреса {i}')
+for i in sorted(sorted_things, reverse=True):
+    if N >= i:
+        print(sorted_things[i], end=' ')
+        N -= i
+        
